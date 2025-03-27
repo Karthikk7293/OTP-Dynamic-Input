@@ -5,7 +5,7 @@ function App() {
   const [digitCount, setDigitCount] = useState(3);
   const [inputArr, setInputArr] = useState(new Array(digitCount).fill(""));
 
-  const inputRef = useRef([])
+  const inputRef = useRef<(HTMLInputElement | null)[]>([]);
 
   useEffect(() => {
 
@@ -63,7 +63,11 @@ function App() {
               className="input-container"
               key={index}
               value={item}
-              ref={(item) => (inputRef!.current[index] = item)}
+              ref={(item) => {
+                if (inputRef?.current) {
+                  inputRef.current[index] = item;
+                }
+              }}
               onChange={(e) => handleChange(e.target.value, index)}
               onKeyDown={(e) => handleKeyDown(e, index)}
             />
