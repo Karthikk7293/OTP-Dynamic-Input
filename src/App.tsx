@@ -11,7 +11,6 @@ function App() {
 
     inputRef.current[0]?.focus()
 
-
   }, [])
 
   useEffect(() => {
@@ -44,7 +43,7 @@ function App() {
     <>
       <h1>validate otp</h1>
       <div className="count-container">
-        <p> Input Count</p>
+        <p> Input Count : {digitCount}</p>
         <div>
 
           <button type="button" onClick={() => setDigitCount(digitCount + 1)}>
